@@ -1,14 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import '../Css/Recieve.css'
 import { storage } from '../init-firebase'
 import { ref, listAll, getDownloadURL } from 'firebase/storage'
-
+import { Navigate } from 'react-router'
 function Receive() {
     const [receiveState, setReceiveState] = useState({
         PROGRESS: 0,
     })
+    const [redirect, setRedirect] = useState({
+        sendRedirect: false,
+        recieveRedirect: false,
+        loginRedirect: false,
+    })
     const CODE = String(window.location.href).slice(36)
-
+    useEffect(() => {
+        // Retrieve username from session storage on component mount
+        const username = sessionStorage.getItem('sid');
+        if (!username) {
+            setRedirect((prev) => ({ ...prev, loginRedirect: true }))
+        }
+      }, []);
+      if (redirect.loginRedirect) {
+        return <Navigate to="/login" />
+    }
+  
     const download = (files) => {
         let len = files.length
         let step = (100 / len).toFixed(10)
@@ -89,6 +104,9 @@ function Receive() {
                     })
             }
         }
+    }
+    const checking=()=>{
+
     }
     const checkFiles = () => {
         let ul = document.getElementById('URLdisplaylist')
@@ -194,6 +212,24 @@ function Receive() {
                         >
                             Files will appear here:
                         </p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Файлын нэр</th>
+                                    </tr> <tr><th>Файлын тайлбар</th>
+                                    </tr> <tr><th>Файлыг нийтэлсэн</th>
+                                    </tr> <tr><th>Зөвшөөрөгдсөн</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                         <ul
                             id="URLdisplaylist"
                             style={{ marginTop: '20px' }}
