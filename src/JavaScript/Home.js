@@ -58,7 +58,11 @@ function App() {
       setRedirect((prev) => ({ ...prev, loginRedirect: true }));
     }
   }, []);
-
+  const logout = async () => {
+    sessionStorage.removeItem("empid"); // empid устгах
+    sessionStorage.removeItem("sid");
+    setRedirect((prev) => ({ ...prev, loginRedirect: true }));
+  }
   const handleAddItem = async () => {
     setUploading(true);
     try {
@@ -115,7 +119,9 @@ function App() {
       <Button variant="primary" className="mb-3" onClick={handleShow}>
         📂 Файл нэмэх
       </Button>
-
+      <Button variant="dark" className="mb-3" onClick={logout}>
+        Гарах
+      </Button>
       {/* Modal Window for Adding File */}
       <Modal show={showModal} onHide={handleClose}>
         <Modal.Header closeButton className="bg-primary text-white">
