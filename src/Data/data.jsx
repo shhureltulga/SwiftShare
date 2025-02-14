@@ -1,5 +1,5 @@
 import api from "axios";
-const URL = "http://localhost:3010/api"
+const URL = "http://172.16.10.92:3010/api"
 console.log(URL)
 // Дата авах
 export const fetchData = async (empid) => {
