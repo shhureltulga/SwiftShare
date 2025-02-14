@@ -209,7 +209,7 @@ function App() {
     <Button
       variant="success"
       onClick={() => {
-        const downloadLink = `http://192.168.167.66:3010/api/test/download/${item.file.fileName}`;
+        const downloadLink = `http://172.16.10.92:3010/api/test/download/${item.file.fileName}`;
 
         // Clipboard дэмжлэгийг шалгах
         if (navigator.clipboard && navigator.clipboard.writeText) {
