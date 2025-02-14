@@ -253,7 +253,7 @@ function App() {
 <td>
   {item.status === true ? (
     "Батлагдсан"
-  ) : sessionStorage.getItem("empid") === "1598626282532" ? (
+  ) : sessionStorage.getItem("empid") === "1599050755442" || sessionStorage.getItem("empid") ==="1598626282532"? (
     <Button
       variant="success"
       onClick={async () => {
